@@ -702,7 +702,7 @@ Request.prototype.init = function (options) {
       // Before ending the request, we had to compute the length of the whole form, asyncly
       self.setHeader(self._form.getHeaders())
       self._form.getLength(function (err, length) {
-        if (!err) {
+        if (!err && !isNaN(length)) {
           self.setHeader('content-length', length)
         }
         end()
